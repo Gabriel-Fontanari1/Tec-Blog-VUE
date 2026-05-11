@@ -10,10 +10,10 @@ defineProps<{
 <template>
 	<div class="MainContainer">
 		<div class="Content">
-			<img src="../assets/placeholder.png" alt="" >
+			<img :src="data.image" :alt="data.title" >
 
 			<div class="TextContent">
-				<p class="UserTag">Usuário: {{ data.userId }}</p>
+				<p class="UserTag">Post ID: {{ data.id }}</p>
 				<h3>{{ data.title }}</h3>
 				<p class="PostBody">{{ data.body }}</p>
 			</div>
