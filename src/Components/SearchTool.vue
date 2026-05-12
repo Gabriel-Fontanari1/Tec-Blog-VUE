@@ -14,7 +14,7 @@
             
             <input type="text" placeholder="Search for a matters...">
 
-            <button class="BtnLogIn">
+            <button class="BtnSignIn">
                 <p>Sign In</p>
                 <i class="material-icons">arrow_forward</i>
             </button>
@@ -52,7 +52,7 @@
     flex-direction: row;
     align-items: center;
     align-content: center;
-    padding: 1rem;
+    padding: 0.5rem;
     border-radius: 3rem;
     margin-bottom:1rem;
     gap: 1rem;

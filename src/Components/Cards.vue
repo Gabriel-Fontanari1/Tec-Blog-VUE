@@ -1,9 +1,22 @@
 <script setup lang="ts">
 
 //Recebe objeto data do v-for do pai
-defineProps<{
+import { useRouter } from 'vue-router'
+
+const props = defineProps<{
 	data: any
 }>();
+
+const router = useRouter()
+
+const openPost = () => {
+	router.push({
+		name: 'PostView',
+		params: {
+			id: props.data.id
+		}
+	})
+}
 
 </script>
 
@@ -18,7 +31,7 @@ defineProps<{
 				<p class="PostBody">{{ data.body }}</p>
 			</div>
 
-			<input type="button" value="Read More">
+			<input type="button" value="Read More" @click="openPost">
 		</div>
 	</div>
 </template>
