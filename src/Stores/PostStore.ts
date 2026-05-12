@@ -1,9 +1,11 @@
 import {defineStore} from 'pinia'
 import {computed, ref} from 'vue'
+import type { ApiComment, ApiPost, CommentsResponse, Post, PostsResponse } from '../Interfaces/I-Posts'
 
+/* Liberar os valores para serem usados nos : */
 export const usePostStore = defineStore('post', () => {
-    const dataCards = ref<any[]>([])
-    const selectedPost = ref<any | null>(null)
+    const dataCards = ref<Post[]>([])
+    const selectedPost = ref<Post | null>(null)
     const loading = ref(false)
     const error = ref<string | null>(null)
     const featuredCards = computed(() => {
@@ -13,18 +15,19 @@ export const usePostStore = defineStore('post', () => {
             .slice(0, 4)
     })
 
-
-    const formatPost = async (post: any) => {
-        let comments: any[] = []
+    
+    /* Formata os coment de cada post */
+    const formatPost = async (post: ApiPost): Promise<Post> => {
+        let comments: Post['comments'] = []
 
         try {
             const commentsResponse = await fetch(`https://dummyjson.com/comments/post/${post.id}`)
             if (commentsResponse.ok) {
-                const commentsData = await commentsResponse.json()
+                const commentsData: CommentsResponse = await commentsResponse.json()
 
                 comments = commentsData.comments
                     .slice(0, 5)
-                    .map((comment: any) => {
+                    .map((comment: ApiComment) => {
                         return {
                             ...comment,
                             dislikes: 0,
@@ -41,13 +44,13 @@ export const usePostStore = defineStore('post', () => {
         }
 
         return {
-            /* Spread Operator, copia tudo do objeto */
             ...post,
             image: `https://picsum.photos/seed/${post.id}/400/250`,
             comments: comments,
         }
     }
 
+    /* Puxa os posts para home */
     const getPosts = async () => {
         loading.value = true
         error.value = null
@@ -57,7 +60,7 @@ export const usePostStore = defineStore('post', () => {
                 throw new Error('Nao foi possivel buscar os posts')
             }
 
-            const postsData = await postsResponse.json()
+            const postsData: PostsResponse = await postsResponse.json()
             /* Divide em 16 posts */
             const posts = postsData.posts.slice(0, 16)
 
@@ -72,6 +75,7 @@ export const usePostStore = defineStore('post', () => {
         }
     }
 
+    /* Puxa os posts para o PostView especifico */
     const getPostById = async (id: number) => {
         loading.value = true
         error.value = null
@@ -89,7 +93,7 @@ export const usePostStore = defineStore('post', () => {
                 throw new Error('Nao foi possivel buscar o post')
             }
 
-            const postData = await postResponse.json()
+            const postData: ApiPost = await postResponse.json()
             selectedPost.value = await formatPost(postData)
         } catch (caughtError) {
             console.error('Erro ao buscar post:', caughtError)
@@ -100,6 +104,7 @@ export const usePostStore = defineStore('post', () => {
         }
     }
 
+    /* deixa tudo disponivel para uso */
     return {
         dataCards,
         selectedPost,

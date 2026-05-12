@@ -2,9 +2,10 @@
 
 //Recebe objeto data do v-for do pai
 import { useRouter } from 'vue-router'
+import type { Post } from '../Interfaces/I-Posts'
 
 const props = defineProps<{
-	data: any
+	data: Post
 }>();
 
 const router = useRouter()

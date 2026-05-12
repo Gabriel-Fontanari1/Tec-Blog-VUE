@@ -1,16 +1,10 @@
 <script setup lang="ts">
 import Cards from "./Cards.vue";
-
-interface CardItem{
-	id:number;
-	title:string;
-	body:string;
-	image:string;
-}
+import type { Post } from "../Interfaces/I-Posts";
 
 //Define o que as propriedades que vai receber do pai
 defineProps<{
-	cards: CardItem[]
+	cards: Post[]
 }>();
 </script>
 

@@ -29,8 +29,15 @@ onMounted(() => {
 				<CardList :cards="postStore.dataCards" />
 			</div>
 			
-			<div class="FeaturedCards">
-				<FeaturedCards v-for="post in postStore.featuredCards" :key="post.id" :data="post"/>
+			<div class="FeaturedLayout">
+				
+				<div class="FeaturedTittle">
+					<p>Featured Section</p>
+				</div>
+				
+				<div class="FeaturedCards">
+					<FeaturedCards v-for="post in postStore.featuredCards" :key="post.id" :data="post"/>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -68,11 +75,21 @@ onMounted(() => {
 	gap: 1rem;
 }
 
+.FeaturedLayout{
+	display: flex;
+	flex-direction: column;
+}
+
+.FeaturedTittle{
+	margin-top: 0.6rem;
+	color: white;
+}
+
 .FeaturedCards{
 	position: sticky;
 	display: flex;
 	flex-direction: column; 
-	margin-block: 3rem;
+	margin-block: 1.2rem;
 	gap: 1rem;
 }
 
