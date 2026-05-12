@@ -1,7 +1,7 @@
 <!-- FINALIZADO -->
 
 <script setup lang="ts">
-
+import { RouterLink } from 'vue-router'
 </script>
 
 <template>
@@ -13,9 +13,9 @@
 		</div>
 
 		<div class="Navigators">
-			<p>Home</p>
+			<RouterLink to="/">Home</RouterLink>
 
-			<p>Services</p>
+			<RouterLink to="/create">Create</RouterLink>
 
 			<p>About</p>
 
@@ -99,6 +99,15 @@
 	flex-direction: row;
 	gap: 2rem;
 	padding-inline: 3rem;
+}
+
+.Navigators a{
+	color: white;
+	text-decoration: none;
+}
+
+.Navigators a:hover{
+	color: #5DF8D8;
 }
 
 </style>
