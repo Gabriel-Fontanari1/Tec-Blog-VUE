@@ -56,7 +56,22 @@ watch(() => route.params.id, loadPost)
 			</div>
 
 			<div class="CommentsContainer">
-				<h2>Comment Section</h2>
+				<div class="HeadderComment">
+					<div class="TittleComentSection">
+						<h2>Comment Section</h2>
+					</div>
+	
+					<div class="TextBtns">
+						<button class="BtnPrevius">
+							<i class="material-icons">arrow_back</i>
+						</button>
+	
+						<button class="BtnNext">
+							<i class="material-icons">arrow_forward</i>
+						</button>
+					</div>
+				</div>
+					
 				<div v-for="comment in post.comments" :key="comment.id" class="Usr">
 					<img :src="comment.user.image" :alt="comment.user.username">
 					<div class="InfoUsrs">
@@ -64,7 +79,7 @@ watch(() => route.params.id, loadPost)
 						<p>{{ comment.body }}</p>
 					</div>
 
-
+					
 						<div class="LikeComment">
 							<i class="material-icons">thumb_up</i>
 							<p>{{ comment.likes }}</p>
@@ -212,10 +227,6 @@ watch(() => route.params.id, loadPost)
 	background-color: #0B4A72;
 }
 
-.CommentsContainer h2{
-	margin-inline: 13rem;
-}
-
 .LikeComment{
 	display: flex;
 	flex-direction: row;
@@ -226,6 +237,15 @@ watch(() => route.params.id, loadPost)
 	background-color: #0B4A72;
 	gap: 1rem;
 	flex: 0 0 auto;
+}
+
+.HeadderComment{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-inline: 14rem;
+	align-content: center;
+	align-items: center;
 }
 
 </style>
