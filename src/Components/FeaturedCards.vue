@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
+import type { Post } from '../Interfaces/I-Posts'
 
 const props = defineProps<{
-	data: any
+	data: Post
 }>();
 
 const router = useRouter()
