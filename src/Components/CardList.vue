@@ -4,7 +4,8 @@ import Cards from "./Cards.vue";
 interface CardItem{
 	id:number;
 	title:string;
-	description:string;
+	body:string;
+	image:string;
 }
 
 //Define o que as propriedades que vai receber do pai
@@ -40,7 +41,7 @@ defineProps<{
 
 	<!-- Card List -->
 	<div class="Card-Grid">
-		<Cards v-for="item in cards" :key="item.id" :data="item"></Cards>/
+		<Cards v-for="item in cards" :key="item.id" :data="item" />
 	</div>
 
 </template>

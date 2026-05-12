@@ -1,7 +1,20 @@
 <script setup lang="ts">
-defineProps<{
+import { useRouter } from 'vue-router'
+
+const props = defineProps<{
 	data: any
 }>();
+
+const router = useRouter()
+
+const openPost = () => {
+	router.push({
+		name: 'PostView',
+		params: {
+			id: props.data.id
+		}
+	})
+}
 </script>
 
 <template>
@@ -10,7 +23,7 @@ defineProps<{
 		<img :src="data.image" :alt="data.title" />
 
 		<div class="TextContainer">
-			<input type="button" value="Read More">
+			<input type="button" value="Read More" @click="openPost">
 			<p>{{data.title}}</p>
 			<div class="LikesFeatured">
 				<p class="LikesFeatured">{{ data.reactions.likes }}</p>

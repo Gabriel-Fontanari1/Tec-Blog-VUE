@@ -22,6 +22,7 @@ onMounted(() => {
 	
 	<div class="PageContainer">
 		<p v-if="postStore.loading" style="color: white; text-align: center;" class="LoadingText">Carregando posts...</p>
+		<p v-else-if="postStore.error" class="LoadingText">{{ postStore.error }}</p>
 		
 		<div v-else class="ContentLayout">
 			<div class="CardsList">
