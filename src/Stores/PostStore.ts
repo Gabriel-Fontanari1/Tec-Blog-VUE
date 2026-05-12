@@ -1,10 +1,16 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import {computed, ref} from 'vue'
 
 export const usePostStore = defineStore('post', () => {
     const dataCards = ref<any[]>([])
     const loading = ref(false)
-
+    const featuredCards = computed(() => {
+        return [...dataCards.value]
+            .sort((a, b) => b.reactions.likes - a.reactions.likes)
+            .slice(0, 4)
+    })
+    
+    
     const getPosts = async () => {
         loading.value = true
         try {
@@ -30,5 +36,5 @@ export const usePostStore = defineStore('post', () => {
         }
     }
 
-    return { dataCards, loading, getPosts }
+    return { dataCards, loading, getPosts, featuredCards}
 })

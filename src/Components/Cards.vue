@@ -55,7 +55,7 @@ defineProps<{
 .TextContent {
 	display: flex;
 	flex-direction: column;
-	gap: 0.2rem;
+	gap: 1rem;
 	flex-grow: 1;
 	margin-top: 0.5rem;
 }

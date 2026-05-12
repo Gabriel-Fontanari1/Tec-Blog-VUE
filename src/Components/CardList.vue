@@ -15,10 +15,27 @@ defineProps<{
 
 <template>
 	<div class="Texts">
-		<h3>WhiteBoard - Post Section</h3>
-
-		<p>Page 0 - 1</p>
-
+		
+		<div class="TextStart">
+			<h3>WhiteBoard - Post Section</h3>
+		</div>
+			
+		<div class="TextEnd">	
+			
+			<p>Page 0 - 1</p>
+			
+			<div class="TextBtns">
+				<button class="BtnPrevius">
+					<i class="material-icons">arrow_back</i>
+				</button>
+	
+				<button class="BtnNext">
+					<i class="material-icons">arrow_forward</i>
+				</button>
+			</div>
+			
+		</div>
+			
 	</div>
 
 	<!-- Card List -->
@@ -33,7 +50,7 @@ defineProps<{
 .Card-Grid{
 	display: grid;
 	/* Garante que a coluna seja dividida em frações iguais */
-	grid-template-columns: repeat(4, 4fr);
+	grid-template-columns: repeat(4, 1fr);
 	align-items: center;
 	align-content: center;
 	justify-content: center;
@@ -44,10 +61,40 @@ defineProps<{
 	color: white;
 	display: flex;
 	flex-direction: row;
+	align-self: center;
 	align-content: center;
 	align-items: center;
-	margin-inline: 7rem;
-	gap: 10rem;
+	justify-content: space-between;
+	margin-inline: 2%;
+}
+
+.TextEnd{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 1rem;
+}
+
+
+.TextBtns{
+	display: flex;
+	flex-direction: row;
+	gap: 0.5rem;
+	align-self: center;
+	align-content: center;
+	justify-content: center;
+}
+
+.BtnPrevius{
+	border-radius: 1rem;
+	border-color: white;
+	padding: 0.2rem;
+}
+
+.BtnNext{
+	border-color: white;
+	border-radius: 1rem;
+	padding: 0.2rem;
 }
 
 </style>
