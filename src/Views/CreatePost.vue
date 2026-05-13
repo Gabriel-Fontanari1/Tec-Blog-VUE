@@ -2,6 +2,29 @@
 
 import BlogHeader from "../Components/BlogHeader.vue";
 import SearchTool from "../Components/SearchTool.vue";
+import {usePostStore} from "../Stores/PostStore.ts";
+import {useRouter} from "vue-router";
+import {ref} from "vue";
+
+const postStore = usePostStore();
+const router = useRouter();
+const title = ref('')
+const body = ref('')
+
+async function publishPost() {
+	if (!title.value || !body.value) {
+		alert('Titulo e texto devem ser preenchidos.')
+		return
+	}
+	
+	await postStore.addPost({
+		title:title.value, body: body.value
+	})
+	title.value = ''
+	body.value = ''
+	router.push('/')
+	console.log("Post Publicado arquivo create Post")
+}
 </script>
 
 <template>
@@ -18,31 +41,28 @@ import SearchTool from "../Components/SearchTool.vue";
 				<h2>Featured Media & Settings</h2>
 			</div>
 		</div>
-		
+
 		<div class="PageContentCreate">
 			<div class="InputsPlaceCreate">
 				<label for="InputTitle">Insert your tittle</label>
-				<input type="text" id="InputTitle">
-	
-				<label for="InputSubTitle">Sub-title</label>
-				<input type="text" id="InputSubTitle"/>
+				<input type="text" id="InputTitle" v-model= "title"/>
 
-				<textarea class="TextInputCreate" placeholder="Insert your text here..."></textarea>
+				<textarea class="TextInputCreate" placeholder="Insert your text here..." v-model="body"></textarea>
 			</div>
-	
+
 			<div class="ImagePlaceCreate">
-				
+
 				<div class="ImageUpload">
 					<img src="../assets/placeholder.png" alt="">
 					<button type="button" class="ButtonUploadImage">Upload Image</button>
 				</div>
-				
+
 				<div class="ButtonsPlaceCreate">
-					<button type="button">Publish Post</button>
+					<button type="button" @click="publishPost()">Publish Post</button>
 				</div>
-				
+
 			</div>
-			
+
 		</div>
 
 	</div>

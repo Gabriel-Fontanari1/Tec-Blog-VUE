@@ -26,7 +26,7 @@ onMounted(() => {
 		
 		<div v-else class="ContentLayout">
 			<div class="CardsList">
-				<CardList :cards="postStore.dataCards" />
+				<CardList :cards="postStore.allPosts" />
 			</div>
 			
 			<div class="FeaturedLayout">

@@ -1,6 +1,6 @@
 import {defineStore} from 'pinia'
 import {computed, ref} from 'vue'
-import type { ApiComment, ApiPost, CommentsResponse, Post, PostsResponse } from '../Interfaces/I-Posts'
+import type { ApiComment, ApiPost, CommentsResponse, Post, PostsResponse, CreatePostInput } from '../Interfaces/I-Posts'
 
 /* Liberar os valores para serem usados nos : */
 export const usePostStore = defineStore('post', () => {
@@ -8,14 +8,40 @@ export const usePostStore = defineStore('post', () => {
     const selectedPost = ref<Post | null>(null)
     const loading = ref(false)
     const error = ref<string | null>(null)
+    const dataCreatedPosts = ref<Post[]>([])
     const featuredCards = computed(() => {
         //Cria uma copia do array
-        return [...dataCards.value]
+        return [...allPosts.value]
             .sort((a, b) => b.reactions.likes - a.reactions.likes)
             .slice(0, 4)
     })
-
     
+    const allPosts = computed(() => {
+        return [...dataCards.value, ...dataCreatedPosts.value]
+    })
+
+    /* Inserir um post criado na lista de posts */
+    const addPost = async (post: CreatePostInput): Promise<void> => {
+        error.value = null
+        try {
+            const id = Math.random() * (500 - 1) + 1
+            console.log("Entrou na criacao de post")
+            const newPost: Post = {
+                id, title: post.title, body: post.body, tags: ['created'],
+                reactions: {
+                    likes: Math.floor (Math.random() * 50) + 1,
+                    dislikes: Math.floor (Math.random() * 50) + 1,
+                },
+                views: 0, userId: 1, image: `https://picsum.photos/seed/post-${id}/400/250`, comments:[]
+            }
+            dataCreatedPosts.value.unshift(newPost)
+            console.log("Post Publicado arquivo PostStore")
+        } catch (caughtError) {
+            console.error('Erro ao adicionar post', caughtError)
+            error.value = 'Nao foi possivel adicionar post'
+        }
+    }
+
     /* Formata os coment de cada post */
     const formatPost = async (post: ApiPost): Promise<Post> => {
         let comments: Post['comments'] = []
@@ -54,13 +80,13 @@ export const usePostStore = defineStore('post', () => {
         loading.value = true
         error.value = null
         try {
-            const postsResponse = await fetch('https://dummyjson.com/posts')
+            const postsResponse = await fetch('https://dummyjson.com/posts?limit=30')
             if (!postsResponse.ok) {
                 throw new Error('Nao foi possivel buscar os posts')
             }
 
             const postsData: PostsResponse = await postsResponse.json()
-            
+
             const posts = postsData.posts
 
             dataCards.value = await Promise.all(posts.map(formatPost))
@@ -73,14 +99,14 @@ export const usePostStore = defineStore('post', () => {
             loading.value = false
         }
     }
-    
+
     /* Puxa os posts para o PostView especifico */
     const getPostById = async (id: number) => {
         loading.value = true
         error.value = null
 
         try {
-            const existingPost = dataCards.value.find((post) => post.id === id)
+            const existingPost = allPosts.value.find((post) => post.id === id)
 
             if (existingPost) {
                 selectedPost.value = existingPost
@@ -109,8 +135,10 @@ export const usePostStore = defineStore('post', () => {
         selectedPost,
         loading,
         error,
+        allPosts,
         getPosts,
         getPostById,
+        addPost,
         featuredCards
     }
 })
