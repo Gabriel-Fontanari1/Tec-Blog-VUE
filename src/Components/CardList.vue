@@ -1,11 +1,41 @@
 <script setup lang="ts">
 import Cards from "./Cards.vue";
 import type { Post } from "../Interfaces/I-Posts";
+import {computed, ref} from "vue";
 
 //Define o que as propriedades que vai receber do pai
-defineProps<{
+const props = defineProps<{
 	cards: Post[]
 }>();
+
+/* Verificacao de paginas */
+const currentPage = ref(0);
+const cardsPerPage = 12;
+const totalPages = computed(() => {
+	return Math.ceil(props.cards.length / cardsPerPage);
+})
+
+/* Pagina atual */
+const paginatedCards = computed(() => {
+	const start = currentPage.value * cardsPerPage;
+	const end = start + cardsPerPage;
+	return props.cards.slice(start, end);
+})
+
+/* Proxima pagina */
+function nextPage() {
+	if (currentPage.value < totalPages.value -1) {
+		currentPage.value++
+	}
+}
+
+/* Pagina anterior */
+function previusPage() {
+	if (currentPage.value > 0) {
+		currentPage.value--
+	}
+}
+
 </script>
 
 <template>
@@ -17,14 +47,14 @@ defineProps<{
 			
 		<div class="TextEnd">	
 			
-			<p>Page 0 - 1</p>
+			<p>Page {{currentPage + 1}} - {{totalPages}}</p>
 			
 			<div class="TextBtns">
-				<button class="BtnPrevius">
+				<button class="BtnPrevius" @click="previusPage()" :disabled="currentPage === 0">
 					<i class="material-icons">arrow_back</i>
 				</button>
 	
-				<button class="BtnNext">
+				<button class="BtnNext" @click="nextPage()" :disabled="currentPage === totalPages - 1">
 					<i class="material-icons">arrow_forward</i>
 				</button>
 			</div>
@@ -35,7 +65,7 @@ defineProps<{
 
 	<!-- Card List -->
 	<div class="Card-Grid">
-		<Cards v-for="item in cards" :key="item.id" :data="item" />
+		<Cards v-for="item in paginatedCards" :key="item.id" :data="item" />
 	</div>
 
 </template>
