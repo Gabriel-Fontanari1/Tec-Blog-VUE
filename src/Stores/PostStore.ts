@@ -26,7 +26,6 @@ export const usePostStore = defineStore('post', () => {
                 const commentsData: CommentsResponse = await commentsResponse.json()
 
                 comments = commentsData.comments
-                    .slice(0, 5)
                     .map((comment: ApiComment) => {
                         return {
                             ...comment,
@@ -61,8 +60,8 @@ export const usePostStore = defineStore('post', () => {
             }
 
             const postsData: PostsResponse = await postsResponse.json()
-            /* Divide em 16 posts */
-            const posts = postsData.posts.slice(0, 16)
+            
+            const posts = postsData.posts
 
             dataCards.value = await Promise.all(posts.map(formatPost))
 
@@ -74,7 +73,7 @@ export const usePostStore = defineStore('post', () => {
             loading.value = false
         }
     }
-
+    
     /* Puxa os posts para o PostView especifico */
     const getPostById = async (id: number) => {
         loading.value = true
