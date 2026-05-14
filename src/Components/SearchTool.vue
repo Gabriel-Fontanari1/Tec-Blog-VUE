@@ -17,17 +17,14 @@ const searchPosts = () => {
     <div class="MainContainer">
 
         <div class="Tittle">
-            <h1>New Points of View</h1>
+            <p>New Points of View</p>
         </div>
 
         <div class="SearchBar">
             <i class="material-icons">search</i>
 
             <input
-                v-model="searchInput"
-                type="text"
-                placeholder="Search for a matters..."
-                @keyup.enter="searchPosts"
+                v-model="searchInput" type="text" placeholder="Search for a matters..." @keyup.enter="searchPosts"
             >
 
             <button class="BtnSearch" @click="searchPosts">
@@ -49,6 +46,7 @@ const searchPosts = () => {
     align-content: center;
     background-image: url("../assets/background-blog.jpg");
     color: white;
+	
 }
 
 .Tittle{
@@ -60,7 +58,11 @@ const searchPosts = () => {
     padding-inline: 1rem;
     border-radius: 1rem;
     background-color: #0B4A72;
-    font-family: Kavoon, serif;
+	font-size: 30px;
+}
+
+.Tittle p{
+	font-family: Kavoon, serif;
 }
 
 .SearchBar{
@@ -77,6 +79,11 @@ const searchPosts = () => {
 
 .SearchBar input{
     width: 35rem;
+	outline: none;
+	background: none;
+	border: none;
+	color: white;
+	font-size: 16px;
 }
 
 .SearchBar button{
@@ -88,11 +95,11 @@ const searchPosts = () => {
     align-items: center;
     width: 6rem;
     height: 3rem;
-    color: white;
+    color: black;
     background-color: #5DF8D8;
-    border-color: white;
     border-radius: 3rem;
     font-size: 16px;
+	border: 2px solid white;
 }
 
 </style>

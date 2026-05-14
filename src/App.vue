@@ -7,6 +7,11 @@
 </template>
 
 <style>
+
+*{
+	font-family: 'Arimo', sans-serif;
+}
+
 .Main-Container{
     background-color: #093C5D;
 }

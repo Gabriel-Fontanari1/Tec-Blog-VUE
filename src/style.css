@@ -28,3 +28,16 @@ body {
   border: none;
   text-align: initial;
 }
+
+.btn {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border: none;
+  text-decoration: none;
+  border-radius: 0.5rem;
+}
+
+.btn.primary {
+  background: #093C5D;
+  border: none;
+}

@@ -71,15 +71,17 @@ async function publishPost() {
     </div>
 
     <div class="MainContainerCreate">
-        <div class="HeaderContanerCreate">
-            <div class="HeadderCreate">
-                <h2>Write Your Content</h2>
-                <h2>Featured Media & Settings</h2>
-            </div>
-        </div>
+<!--        <div class="HeaderContanerCreate">-->
+<!--            <div class="HeadderCreate">-->
+<!--                <h2>Write Your Content</h2>-->
+<!--                <h2>Featured Media & Settings</h2>-->
+<!--            </div>-->
+<!--        </div>-->
 
         <div class="PageContentCreate">
             <div class="InputsPlaceCreate">
+				<h2>Write Your Content</h2>
+				
                 <label for="InputTitle">Insert your tittle</label>
                 <input type="text" id="InputTitle" v-model= "title"/>
 
@@ -87,7 +89,8 @@ async function publishPost() {
             </div>
 
             <div class="ImagePlaceCreate">
-
+				<h2>Featured Media & Settings</h2>
+				
                 <div class="ImageUpload">
                     <img :src="image" alt="Imagem selecionada para o post">
                     <input
@@ -139,25 +142,35 @@ async function publishPost() {
 .PageContentCreate{
     display: flex;
     flex-direction: row;
-    gap: 10rem;
+    gap: 5rem;
     margin: 2rem;
     background: #0B4A72;
     padding: 5rem;
     border-radius: 2rem;
 }
 
+.PageContentCreate h2{
+	margin-bottom: 1rem;
+	color: white;
+}
+
 .InputsPlaceCreate{
     display: flex;
     width: 30rem;
     flex-direction: column;
-    gap: 1rem;
+	gap: 1rem;
+}
+
+.InputsPlaceCreate input{
+	border-radius: 0.5rem;
+	border: 2px solid white;
 }
 
 .ButtonsPlaceCreate{
     display: flex;
     flex-direction: row;
     justify-content: end;
-    gap: 0.2rem;
+    margin-top: 1rem;
 }
 
 .ButtonsPlaceCreate button{

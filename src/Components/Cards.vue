@@ -10,6 +10,7 @@ const props = defineProps<{
 
 const router = useRouter()
 
+/* Puxar post com id específico */
 const openPost = () => {
     router.push({
         name: 'PostView',

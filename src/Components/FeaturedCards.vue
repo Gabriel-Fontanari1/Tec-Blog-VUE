@@ -8,6 +8,7 @@ const props = defineProps<{
 
 const router = useRouter()
 
+/* Puxar post com id específico */
 const openPost = () => {
     router.push({
         name: 'PostView',
@@ -26,9 +27,10 @@ const openPost = () => {
         <div class="TextContainer">
             <input type="button" value="Read More" @click="openPost">
             <p>{{data.title}}</p>
+			
             <div class="LikesFeatured">
+				<i class="material-icons">thumb_up</i>
                 <p class="LikesFeatured">{{ data.reactions.likes }}</p>
-                <i class="material-icons">thumb_up</i>
             </div>
         </div>
 
@@ -81,7 +83,7 @@ const openPost = () => {
     flex-direction: row;
     align-items: center;
     align-content: center;
-    gap: 1rem;
+    gap: 0.5rem;
 }
 
 </style>

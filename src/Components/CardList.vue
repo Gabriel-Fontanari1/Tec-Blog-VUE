@@ -118,14 +118,38 @@ function previusPage() {
 
 .BtnPrevius{
     border-radius: 1rem;
-    border-color: white;
+	border: none;
+	outline: none;
+	appearance: none;
+    background-color: #093C5D;
+	-webkit-appearance: none;
+	cursor: pointer;
+	width: 3rem;
+	color: white;
     padding: 0.2rem;
 }
 
+.BtnPrevius:disabled{
+	color: grey;
+	cursor: not-allowed;
+}
+
 .BtnNext{
-    border-color: white;
-    border-radius: 1rem;
-    padding: 0.2rem;
+	border-radius: 1rem;
+	border: none;
+	outline: none;
+	appearance: none;
+	background-color: #093C5D;
+	color: white;
+	-webkit-appearance: none;
+	cursor: pointer;
+	width: 3rem;
+	padding: 0.2rem;
+}
+
+.BtnNext:disabled{
+	color: grey;
+	cursor: not-allowed;
 }
 
 .NoResults{
