@@ -1,25 +1,41 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { usePostStore } from '../Stores/PostStore'
 
+const router = useRouter()
+const postStore = usePostStore()
+const searchInput = ref(postStore.searchTerm)
+
+const searchPosts = () => {
+    postStore.setSearchTerm(searchInput.value)
+    router.push({ name: 'HomePage' })
+}
 </script>
 
 <template>
     <div class="MainContainer">
-        
+
         <div class="Tittle">
             <h1>New Points of View</h1>
         </div>
 
         <div class="SearchBar">
             <i class="material-icons">search</i>
-            
-            <input type="text" placeholder="Search for a matters...">
 
-            <button class="BtnSignIn">
-                <p>Sign In</p>
+            <input
+                v-model="searchInput"
+                type="text"
+                placeholder="Search for a matters..."
+                @keyup.enter="searchPosts"
+            >
+
+            <button class="BtnSearch" @click="searchPosts">
+                <p>Search</p>
                 <i class="material-icons">arrow_forward</i>
             </button>
         </div>
-        
+
     </div>
 
 </template>
