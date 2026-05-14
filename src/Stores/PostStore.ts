@@ -9,16 +9,31 @@ export const usePostStore = defineStore('post', () => {
     const loading = ref(false)
     const error = ref<string | null>(null)
     const dataCreatedPosts = ref<Post[]>([])
+    const searchTerm = ref('')
     const featuredCards = computed(() => {
         //Cria uma copia do array
         return [...allPosts.value]
             .sort((a, b) => b.reactions.likes - a.reactions.likes)
             .slice(0, 4)
     })
-    
+
     const allPosts = computed(() => {
         return [...dataCards.value, ...dataCreatedPosts.value]
     })
+
+    const filteredPosts = computed(() => {
+        const term = searchTerm.value.trim().toLowerCase()
+
+        if (!term) {
+            return allPosts.value
+        }
+
+        return allPosts.value.filter((post) => post.title.toLowerCase().startsWith(term))
+    })
+
+    const setSearchTerm = (term: string) => {
+        searchTerm.value = term
+    }
 
     /* Inserir um post criado na lista de posts */
     const addPost = async (post: CreatePostInput): Promise<void> => {
@@ -136,9 +151,12 @@ export const usePostStore = defineStore('post', () => {
         loading,
         error,
         allPosts,
+        filteredPosts,
+        searchTerm,
         getPosts,
         getPostById,
         addPost,
-        featuredCards
+        featuredCards,
+        setSearchTerm
     }
 })

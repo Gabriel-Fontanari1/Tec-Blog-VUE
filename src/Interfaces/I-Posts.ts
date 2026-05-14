@@ -9,7 +9,7 @@ export interface Post {
     userId: number
     image: string
     comments: Comment[]
-}   
+}
 
 export interface CreatePostInput {
     title: string
