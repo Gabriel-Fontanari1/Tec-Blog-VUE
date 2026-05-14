@@ -10,6 +10,38 @@ const postStore = usePostStore();
 const router = useRouter();
 const title = ref('')
 const body = ref('')
+const image = ref(new URL('../assets/placeholder.png', import.meta.url).href)
+const fileInput = ref<HTMLInputElement | null>(null)
+
+function openFileSelector() {
+    fileInput.value?.click()
+}
+
+function selectImage(event: Event) {
+    const input = event.target as HTMLInputElement
+    const file = input.files?.[0]
+
+    if (!file) {
+        return
+    }
+
+    if (!file.type.startsWith('image/')) {
+        alert('Selecione um arquivo de imagem.')
+        input.value = ''
+        return
+    }
+
+    const reader = new FileReader()
+
+    reader.onload = () => {
+        if (typeof reader.result === 'string') {
+            image.value = reader.result
+        }
+    }
+    
+    /* Salva em base 64 */
+    reader.readAsDataURL(file)
+}
 
 async function publishPost() {
     if (!title.value || !body.value) {
@@ -18,14 +50,18 @@ async function publishPost() {
     }
 
     await postStore.addPost({
-        title:title.value, body: body.value
+        title:title.value, body: body.value, image: image.value
     })
     title.value = ''
     body.value = ''
+    image.value = new URL('../assets/placeholder.png', import.meta.url).href
+    if (fileInput.value) {
+        fileInput.value.value = ''
+    }
     router.push('/')
     console.log("Post Publicado arquivo create Post")
 }
-</script>¹
+</script>
 
 <template>
 
@@ -53,8 +89,15 @@ async function publishPost() {
             <div class="ImagePlaceCreate">
 
                 <div class="ImageUpload">
-                    <img src="../assets/placeholder.png" alt="">
-                    <button type="button" class="ButtonUploadImage">Upload Image</button>
+                    <img :src="image" alt="Imagem selecionada para o post">
+                    <input
+                        ref="fileInput"
+                        type="file"
+                        accept="image/*"
+                        class="FileInput"
+                        @change="selectImage"
+                    >
+                    <button type="button" class="ButtonUploadImage" @click="openFileSelector">Upload Image</button>
                 </div>
 
                 <div class="ButtonsPlaceCreate">
@@ -164,6 +207,10 @@ async function publishPost() {
     cursor: pointer;
     z-index: 10;
     color: white;
+}
+
+.FileInput {
+    display: none;
 }
 
 .TextInputCreate {

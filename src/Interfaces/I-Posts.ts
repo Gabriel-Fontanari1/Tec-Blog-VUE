@@ -14,6 +14,7 @@ export interface Post {
 export interface CreatePostInput {
     title: string
     body: string
+    image: string
 }
 
 export interface Reactions {
