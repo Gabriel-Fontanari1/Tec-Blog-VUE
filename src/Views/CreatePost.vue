@@ -71,28 +71,23 @@ async function publishPost() {
     </div>
 
     <div class="MainContainerCreate">
-<!--        <div class="HeaderContanerCreate">-->
-<!--            <div class="HeadderCreate">-->
-<!--                <h2>Write Your Content</h2>-->
-<!--                <h2>Featured Media & Settings</h2>-->
-<!--            </div>-->
-<!--        </div>-->
-
+		
         <div class="PageContentCreate">
             <div class="InputsPlaceCreate">
 				<h2>Write Your Content</h2>
 				
-                <label for="InputTitle">Insert your tittle</label>
+                <label for="InputTitle">Post Title</label>
                 <input type="text" id="InputTitle" v-model= "title"/>
 
-                <textarea class="TextInputCreate" placeholder="Insert your text here..." v-model="body"></textarea>
+				<label for="TextAreaContent">Content</label>
+                <textarea id="TextAreaContent" class="TextInputCreate" placeholder="Insert your text here..." v-model="body"></textarea>
             </div>
 
             <div class="ImagePlaceCreate">
 				<h2>Featured Media & Settings</h2>
 				
                 <div class="ImageUpload">
-                    <img :src="image" alt="Imagem selecionada para o post">
+                    <img :src="image" alt="Selected Image">
                     <input
                         ref="fileInput"
                         type="file"
@@ -140,6 +135,7 @@ async function publishPost() {
 }
 
 .PageContentCreate{
+	box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     display: flex;
     flex-direction: row;
     gap: 5rem;
