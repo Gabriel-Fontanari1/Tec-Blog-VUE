@@ -11,9 +11,9 @@ const postId = computed(() => Number(route.params.id))
 const post = computed(() => postStore.selectedPost)
 
 const loadPost = () => {
-    if (!Number.isNaN(postId.value)) {
-        postStore.getPostById(postId.value)
-    }
+	if (!Number.isNaN(postId.value)) {
+		postStore.getPostById(postId.value)
+	}
 }
 
 onMounted(loadPost)
@@ -22,56 +22,56 @@ watch(() => route.params.id, loadPost)
 
 <template>
 
-    <div class="ContainerTopStatic">
-        <BlogHeader />
-        <SearchTool />
-    </div>
+	<div class="ContainerTopStatic">
+		<BlogHeader />
+		<SearchTool />
+	</div>
 
-    <div class="PageContainer">
+	<div class="PageContainer">
 
-        <div class="MainContainerView" v-if="post">
-            <div class="PostContainer">
+		<div class="MainContainerView" v-if="post">
+			<div class="PostContainer">
 
-                <div class="TextsContainer">
-                    <h1>{{ post.title }}</h1>
-                    <p>{{ post.body }}</p>
-                </div>
+				<div class="TextsContainer">
+					<h1>{{ post.title }}</h1>
+					<p>{{ post.body }}</p>
+				</div>
 
-                <div class="ImageContainer">
-                    <div class="Img"></div>
-                    <img :src="post.image" :alt="post.title">
+				<div class="ImageContainer">
+					<div class="Img"></div>
+					<img :src="post.image" :alt="post.title">
 
-                    <div class="LikesContainer">
-                        <div class="Like">
-                            <i class="material-icons">thumb_up</i>
-                            <p>{{ post.reactions?.likes }}</p>
-                        </div>
+					<div class="LikesContainer">
+						<div class="Like">
+							<i class="material-icons">thumb_up</i>
+							<p>{{ post.reactions?.likes }}</p>
+						</div>
 
-                        <div class="Dislikes">
-                            <i class="material-icons">thumb_down</i>
-                            <p>{{ post.reactions?.dislikes }}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+						<div class="Dislikes">
+							<i class="material-icons">thumb_down</i>
+							<p>{{ post.reactions?.dislikes }}</p>
+						</div>
+					</div>
+				</div>
+			</div>
 
-            <div class="CommentsContainer">
-                <div class="HeadderComment">
-                    <div class="TittleComentSection">
-                        <h2>Comment Section</h2>
-                    </div>
-                </div>
-				
+			<div class="CommentsContainer">
+				<div class="HeadderComment">
+					<div class="TittleComentSection">
+						<h2>Comment Section</h2>
+					</div>
+				</div>
+
 				<div v-if="post.comments.length > 0">
 
 					<div
 						v-for="comment in post.comments"
-			            :key="comment.id"
-			            class="Usr"
+						:key="comment.id"
+						class="Usr"
 					>
 						<img
 							:src="comment.user.image"
-				            :alt="comment.user.username"
+							:alt="comment.user.username"
 						>
 
 						<div class="InfoUsrs">
@@ -87,22 +87,22 @@ watch(() => route.params.id, loadPost)
 					</div>
 
 				</div>
-				
+
 				<div v-else class="NoComments">
 					<p>
 						No comments...
 					</p>
 				</div>
-            </div>
+			</div>
 
-        </div>
+		</div>
 
-        <div v-else class="LoadingContainer">
-            <p v-if="postStore.loading">Loading posts...</p>
-            <p v-else>{{ postStore.error }}</p>
-            <RouterLink to="/">Voltar</RouterLink>
-        </div>
-    </div>
+		<div v-else class="LoadingContainer">
+			<p v-if="postStore.loading">Loading posts...</p>
+			<p v-else>{{ postStore.error }}</p>
+			<RouterLink to="/">Voltar</RouterLink>
+		</div>
+	</div>
 
 </template>
 
@@ -121,137 +121,139 @@ watch(() => route.params.id, loadPost)
 }
 
 .ContainerTopStatic {
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    background: #093C5D;
+	display: flex;
+	flex-direction: column;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 1000;
+	background: #093C5D;
 }
 
 .PageContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-top: 17rem;
-    width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding-top: 17rem;
+	width: 100%;
 }
 
 .MainContainerView{
-    background-color: #0B4A72;
-    display: flex;
-    flex-direction: column;
-    color: white;
-    margin-inline: 2rem;
-    border-radius: 1rem;
-    width: min(100% - 4rem, 75rem);
-    overflow: hidden;
+	background-color: #0B4A72;
+	display: flex;
+	flex-direction: column;
+	color: white;
+	margin-inline: 2rem;
+	margin-bottom: 2rem;
+	border-radius: 1rem;
+	width: min(100% - 4rem, 75rem);
+	overflow: hidden;
+	box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
 .ImageContainer{
-    display: flex;
-    flex-direction: column;
-    align-items: end;
-    align-self: flex-end;
-    gap: 1rem;
-    margin-inline: 3rem;
+	display: flex;
+	flex-direction: column;
+	align-items: end;
+	align-self: flex-end;
+	gap: 1rem;
+	margin-inline: 3rem;
 }
 
 .ImageContainer img{
-    width: 25rem;
-    height: 15.625rem;
-    object-fit: cover;
-    border-radius: 1rem;
+	width: 25rem;
+	height: 15.625rem;
+	object-fit: cover;
+	border-radius: 1rem;
 }
 
 .LikesContainer {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 1rem;
-    margin-bottom: 1rem;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 1rem;
+	margin-bottom: 1rem;
 }
 
 .Like,
 .Dislikes {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    height: 2.5rem;
-    min-width: 5rem;
-    padding: 0 1rem;
-    border-radius: 0.7rem;
-    background-color: #0B4A72;
-    color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	height: 2.5rem;
+	min-width: 5rem;
+	padding: 0 1rem;
+	border-radius: 0.7rem;
+	background-color: #0B4A72;
+	color: white;
 }
 
 .Like p,
 .Dislikes p {
-    margin: 0;
+	margin: 0;
 }
 
 .material-icons {
-    font-size: 1.2rem;
+	font-size: 1.2rem;
 }
 
 .PostContainer{
-    display: flex;
-    flex-direction: row;
-    margin: 2rem;
-    border-radius: 1rem;
-    background-color: #093C5D;
-    overflow: hidden;
+	display: flex;
+	flex-direction: row;
+	margin: 2rem;
+	border-radius: 1rem;
+	background-color: #093C5D;
+	overflow: hidden;
 	text-align: justify;
 }
 
 .TextsContainer{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-    justify-items: center;
-    align-self: center;
-    gap: 1rem;
-    width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	align-content: center;
+	justify-content: center;
+	justify-items: center;
+	align-self: center;
+	gap: 1rem;
+	width: 100%;
 }
 
 .PostContainer p,
 .PostContainer h1{
-    width: 70%;
+	width: 70%;
 }
 
 .Usr{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 1rem;
-    margin-inline: 13rem;
-    margin-block: 2rem;
-    border-radius: 1rem;
-    padding: 0.5rem;
-    background-color: #093C5D;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 1rem;
+	margin-inline: 13rem;
+	margin-block: 2rem;
+	border-radius: 1rem;
+	padding: 0.5rem;
+	background-color: #093C5D;
 }
 
 .Usr img{
-    border-radius: 1rem;
+	border-radius: 1rem;
 }
 
 .InfoUsrs{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 1rem;
-    flex: 1;
-    min-width: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 1rem;
+	flex: 1;
+	min-width: 0;
 }
 
 .CommentsContainer{
-    background-color: #0B4A72;
+	background-color: #0B4A72;
 }
 
 .LikeComment{
@@ -266,12 +268,12 @@ watch(() => route.params.id, loadPost)
 }
 
 .HeadderComment{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-inline: 14rem;
-    align-content: center;
-    align-items: center;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-inline: 14rem;
+	align-content: center;
+	align-items: center;
 	margin-top: 1rem;
 }
 

@@ -83,6 +83,7 @@ import { RouterLink } from 'vue-router'
     background-color: #5DF8D8;
 	border: 2px solid white;
     color: black;
+	box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
 .ButtonSection button:nth-child(2){
@@ -104,6 +105,7 @@ import { RouterLink } from 'vue-router'
     gap: 2rem;
     padding-inline: 3rem;
 }
+
 
 .Navigators a{
     color: white;

@@ -1,3 +1,5 @@
 https://materializecss.com/icons.html
 
 https://www.freecodecamp.org/portuguese/news/z-index-explicado-como-sobrepor-elementos-usando-o-css/
+
+https://www.braveuxplatform.com/post/the-right-and-left-side-of-button-design-how-icon-placement-affects-user-interaction?
