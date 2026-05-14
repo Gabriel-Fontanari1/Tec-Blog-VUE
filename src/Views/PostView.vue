@@ -60,38 +60,45 @@ watch(() => route.params.id, loadPost)
                     <div class="TittleComentSection">
                         <h2>Comment Section</h2>
                     </div>
-
-                    <div class="TextBtns">
-                        <button class="BtnPrevius">
-                            <i class="material-icons">arrow_back</i>
-                        </button>
-
-                        <button class="BtnNext">
-                            <i class="material-icons">arrow_forward</i>
-                        </button>
-                    </div>
                 </div>
+				
+				<div v-if="post.comments.length > 0">
 
-                <div v-for="comment in post.comments" :key="comment.id" class="Usr">
-                    <img :src="comment.user.image" :alt="comment.user.username">
-                    <div class="InfoUsrs">
-                        <h3>{{ comment.user.username }}</h3>
-                        <p>{{ comment.body }}</p>
-                    </div>
+					<div
+						v-for="comment in post.comments"
+			            :key="comment.id"
+			            class="Usr"
+					>
+						<img
+							:src="comment.user.image"
+				            :alt="comment.user.username"
+						>
 
+						<div class="InfoUsrs">
+							<h3>{{ comment.user.username }}</h3>
+							<p>{{ comment.body }}</p>
+						</div>
 
-                    <div class="LikeComment">
-                        <i class="material-icons">thumb_up</i>
-                        <p>{{ comment.likes }}</p>
-                    </div>
+						<div class="LikeComment">
+							<i class="material-icons">thumb_up</i>
+							<p>{{ comment.likes }}</p>
+						</div>
 
-                </div>
+					</div>
+
+				</div>
+				
+				<div v-else class="NoComments">
+					<p>
+						No comments...
+					</p>
+				</div>
             </div>
 
         </div>
 
-        <div v-else class="MainContainer">
-            <p v-if="postStore.loading">Carregando post...</p>
+        <div v-else class="LoadingContainer">
+            <p v-if="postStore.loading">Loading posts...</p>
             <p v-else>{{ postStore.error }}</p>
             <RouterLink to="/">Voltar</RouterLink>
         </div>
@@ -100,6 +107,18 @@ watch(() => route.params.id, loadPost)
 </template>
 
 <style scoped>
+
+.LoadingContainer{
+	color: white;
+	display: flex;
+	flex-direction: column;
+}
+
+.LoadingContainer RouterLink{
+	color: white;
+	display: flex;
+	flex-direction: column;
+}
 
 .ContainerTopStatic {
     display: flex;
@@ -128,6 +147,8 @@ watch(() => route.params.id, loadPost)
     color: white;
     margin-inline: 2rem;
     border-radius: 1rem;
+    width: min(100% - 4rem, 75rem);
+    overflow: hidden;
 }
 
 .ImageContainer{
@@ -140,6 +161,9 @@ watch(() => route.params.id, loadPost)
 }
 
 .ImageContainer img{
+    width: 25rem;
+    height: 15.625rem;
+    object-fit: cover;
     border-radius: 1rem;
 }
 
@@ -180,6 +204,8 @@ watch(() => route.params.id, loadPost)
     margin: 2rem;
     border-radius: 1rem;
     background-color: #093C5D;
+    overflow: hidden;
+	text-align: justify;
 }
 
 .TextsContainer{
@@ -194,7 +220,8 @@ watch(() => route.params.id, loadPost)
     width: 100%;
 }
 
-.PostContainer p, h1{
+.PostContainer p,
+.PostContainer h1{
     width: 70%;
 }
 
@@ -228,15 +255,14 @@ watch(() => route.params.id, loadPost)
 }
 
 .LikeComment{
-    display: flex;
-    flex-direction: row;
-    align-self: center;
-    margin-left: auto;
-    border-radius: 1rem;
-    padding: 1rem;
-    background-color: #0B4A72;
-    gap: 1rem;
-    flex: 0 0 auto;
+	display: flex;
+	flex-direction: row;
+	border-radius: 1rem;
+	padding: 1rem;
+	background-color: #0B4A72;
+	gap: 0.5rem;
+	margin-left: auto;
+	margin-right: 1rem;
 }
 
 .HeadderComment{
@@ -246,6 +272,17 @@ watch(() => route.params.id, loadPost)
     margin-inline: 14rem;
     align-content: center;
     align-items: center;
+	margin-top: 1rem;
+}
+
+.NoComments{
+	display: flex;
+	align-items: center;
+	margin-inline: 14rem;
+	margin-top: 1rem;
+	text-decoration: underline;
+	opacity: 50%;
+	margin-bottom: 2rem;
 }
 
 </style>

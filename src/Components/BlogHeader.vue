@@ -81,8 +81,12 @@ import { RouterLink } from 'vue-router'
     gap:0.5rem;
     border-radius: 0.5rem;
     background-color: #5DF8D8;
-    border-color: white;
-    color: white;
+	border: 2px solid white;
+    color: black;
+}
+
+.ButtonSection button:nth-child(2){
+	color: white;
 }
 
 .ButtonSection i{
