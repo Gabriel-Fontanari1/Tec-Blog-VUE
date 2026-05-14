@@ -1,6 +1,23 @@
 import {defineStore} from 'pinia'
-import {computed, ref} from 'vue'
+import {computed, ref, watch} from 'vue'
 import type { ApiComment, ApiPost, CommentsResponse, Post, PostsResponse, CreatePostInput } from '../Interfaces/I-Posts'
+
+const CREATED_POSTS_STORAGE_KEY = 'createdPosts'
+
+const loadCreatedPosts = (): Post[] => {
+    const createdPosts = localStorage.getItem(CREATED_POSTS_STORAGE_KEY)
+
+    if (!createdPosts) {
+        return []
+    }
+
+    try {
+        return JSON.parse(createdPosts) as Post[]
+    } catch (caughtError) {
+        console.error('Erro ao carregar posts criados', caughtError)
+        return []
+    }
+}
 
 /* Liberar os valores para serem usados nos : */
 export const usePostStore = defineStore('post', () => {
@@ -8,7 +25,7 @@ export const usePostStore = defineStore('post', () => {
     const selectedPost = ref<Post | null>(null)
     const loading = ref(false)
     const error = ref<string | null>(null)
-    const dataCreatedPosts = ref<Post[]>([])
+    const dataCreatedPosts = ref<Post[]>(loadCreatedPosts())
     const searchTerm = ref('')
     const featuredCards = computed(() => {
         //Cria uma copia do array
@@ -39,7 +56,7 @@ export const usePostStore = defineStore('post', () => {
     const addPost = async (post: CreatePostInput): Promise<void> => {
         error.value = null
         try {
-            const id = Math.random() * (500 - 1) + 1
+            const id = Date.now()
             console.log("Entrou na criacao de post")
             const newPost: Post = {
                 id, title: post.title, body: post.body, tags: ['created'],
@@ -47,7 +64,7 @@ export const usePostStore = defineStore('post', () => {
                     likes: Math.floor (Math.random() * 50) + 1,
                     dislikes: Math.floor (Math.random() * 50) + 1,
                 },
-                views: 0, userId: 1, image: `https://picsum.photos/seed/post-${id}/400/250`, comments:[]
+                views: 0, userId: 1, image: post.image, comments:[]
             }
             dataCreatedPosts.value.unshift(newPost)
             console.log("Post Publicado arquivo PostStore")
@@ -56,6 +73,10 @@ export const usePostStore = defineStore('post', () => {
             error.value = 'Nao foi possivel adicionar post'
         }
     }
+
+    watch(dataCreatedPosts, (posts) => {
+        localStorage.setItem(CREATED_POSTS_STORAGE_KEY, JSON.stringify(posts))
+    }, { deep: true })
 
     /* Formata os coment de cada post */
     const formatPost = async (post: ApiPost): Promise<Post> => {
