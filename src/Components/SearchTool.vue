@@ -44,7 +44,7 @@ const searchPosts = () => {
 	align-items: center;
 	align-content: center;
 	background-image: url("../assets/background-blog.jpg");
-	color: white;
+	color: var(--color-text);
 
 }
 
@@ -83,7 +83,7 @@ const searchPosts = () => {
 	outline: none;
 	background: none;
 	border: none;
-	color: white;
+	color: var(--color-text);
 	font-size: 16px;
 }
 
@@ -96,11 +96,11 @@ const searchPosts = () => {
 	align-items: center;
 	width: 6.5rem;
 	height: 2.5rem;
-	color: black;
+	color: var(--color-text-secondary);
 	background-color: var(--color-accent);
 	border-radius: 3rem;
 	font-size: 16px;
-	border: 2px solid white;
+	border: 2px solid var(--color-text);
 	box-shadow: var(--shadow-container);
 	font-weight: bold;
 }

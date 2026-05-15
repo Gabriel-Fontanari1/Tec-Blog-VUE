@@ -99,7 +99,7 @@ function previusPage() {
 }
 
 .Texts{
-	color: white;
+	color: var(--color-text);
 	display: flex;
 	flex-direction: row;
 	align-self: center;
@@ -135,7 +135,7 @@ function previusPage() {
 	-webkit-appearance: none;
 	cursor: pointer;
 	width: 3rem;
-	color: white;
+	color: var(--color-text);
 	padding: 0.2rem;
 }
 
@@ -150,7 +150,7 @@ function previusPage() {
 	outline: none;
 	appearance: none;
 	background-color: var(--color-primary);
-	color: white;
+	color: var(--color-text);
 	-webkit-appearance: none;
 	cursor: pointer;
 	width: 3rem;
@@ -163,7 +163,7 @@ function previusPage() {
 }
 
 .NoResults{
-	color: white;
+	color: var(--color-text);
 	text-align: center;
 	margin-top: 2rem;
 }

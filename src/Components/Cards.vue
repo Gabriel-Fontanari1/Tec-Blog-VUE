@@ -52,7 +52,7 @@ const openPost = () => {
 	background-color: var(--color-secondary);
 	height: 24rem;
 	width: 15rem;
-	color: white;
+	color: var(--color-text);
 	border-radius: 2rem;
 	overflow: hidden;
 	padding: 1rem;
@@ -110,7 +110,7 @@ const openPost = () => {
 
 .Content input {
 	align-self: center;
-	color: white;
+	color: var(--color-text);
 	width: 10rem;
 	background: none;
 	border: none;

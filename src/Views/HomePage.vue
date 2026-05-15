@@ -24,7 +24,7 @@ onMounted(() => {
 
 	<div class="PageContainer">
 
-		<p v-if="postStore.loading" style="color: white; text-align: center;" class="LoadingText">Loading posts...</p>
+		<p v-if="postStore.loading" style="color: var(--color-text); text-align: center;" class="LoadingText">Loading posts...</p>
 		<p v-else-if="postStore.error" class="LoadingText">{{ postStore.error }}</p>
 
 		<div v-else class="ContentLayout">
@@ -72,12 +72,12 @@ onMounted(() => {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding-top: 17rem;
+	padding-top: 15rem;
 	width: 100%;
 }
 
 .LoadingText{
-	color:white;
+	color:var(--color-text);
 	text-align: center;
 }
 
@@ -95,7 +95,7 @@ onMounted(() => {
 
 .FeaturedTittle{
 	margin-top: 0.6rem;
-	color: white;
+	color: var(--color-text);
 }
 
 .FeaturedCards{
