@@ -42,7 +42,7 @@ const openPost = () => {
 .MainContainer {
     display: flex;
     flex-direction: column;
-    background-color: #0B4A72;
+    background-color: var(--color-secondary);
     height: 24rem;
     width: 15rem;
     color: white;
@@ -51,7 +51,7 @@ const openPost = () => {
     padding: 1rem;
     box-sizing: border-box;
     margin: 1rem;
-	box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+	box-shadow: var(--shadow-container);
 }
 
 .Content {
@@ -66,6 +66,7 @@ const openPost = () => {
     height: 8rem;
     object-fit: cover;
     border-radius: 1rem;
+	box-shadow: var(--shadow-insideContainer);
 }
 
 .TextContent {
@@ -113,6 +114,6 @@ const openPost = () => {
 }
 
 .Content input:hover {
-    color: #5DF8D8;
+    color: var(--color-accent);
 }
 </style>

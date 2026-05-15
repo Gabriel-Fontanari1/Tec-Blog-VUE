@@ -128,7 +128,7 @@ watch(() => route.params.id, loadPost)
 	left: 0;
 	width: 100%;
 	z-index: 1000;
-	background: #093C5D;
+	background: var(--color-primary);
 }
 
 .PageContainer {
@@ -141,7 +141,7 @@ watch(() => route.params.id, loadPost)
 }
 
 .MainContainerView{
-	background-color: #0B4A72;
+	background-color: var(--color-secondary);
 	display: flex;
 	flex-direction: column;
 	color: white;
@@ -150,7 +150,7 @@ watch(() => route.params.id, loadPost)
 	border-radius: 1rem;
 	width: min(100% - 4rem, 75rem);
 	overflow: hidden;
-	box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+	box-shadow: var(--shadow-container);
 }
 
 .ImageContainer{
@@ -187,7 +187,7 @@ watch(() => route.params.id, loadPost)
 	min-width: 5rem;
 	padding: 0 1rem;
 	border-radius: 0.7rem;
-	background-color: #0B4A72;
+	background-color: var(--color-secondary);
 	color: white;
 }
 
@@ -205,7 +205,7 @@ watch(() => route.params.id, loadPost)
 	flex-direction: row;
 	margin: 2rem;
 	border-radius: 1rem;
-	background-color: #093C5D;
+	background-color: var(--color-primary);
 	overflow: hidden;
 	text-align: justify;
 }
@@ -236,7 +236,7 @@ watch(() => route.params.id, loadPost)
 	margin-block: 2rem;
 	border-radius: 1rem;
 	padding: 0.5rem;
-	background-color: #093C5D;
+	background-color: var(--color-primary);
 }
 
 .Usr img{
@@ -253,7 +253,7 @@ watch(() => route.params.id, loadPost)
 }
 
 .CommentsContainer{
-	background-color: #0B4A72;
+	background-color: var(--color-secondary);
 }
 
 .LikeComment{
@@ -261,7 +261,7 @@ watch(() => route.params.id, loadPost)
 	flex-direction: row;
 	border-radius: 1rem;
 	padding: 1rem;
-	background-color: #0B4A72;
+	background-color: var(--color-primary);
 	gap: 0.5rem;
 	margin-left: auto;
 	margin-right: 1rem;

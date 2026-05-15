@@ -13,6 +13,6 @@
 }
 
 .Main-Container{
-    background-color: #093C5D;
+    background-color: var(--color-primary);
 }
 </style>

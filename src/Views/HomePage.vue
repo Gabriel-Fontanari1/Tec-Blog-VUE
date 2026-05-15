@@ -52,7 +52,7 @@ onMounted(() => {
     left: 0;
     width: 100%;
     z-index: 1000;
-    background: #093C5D;
+    background: var(--color-primary);
 }
 
 .PageContainer{
