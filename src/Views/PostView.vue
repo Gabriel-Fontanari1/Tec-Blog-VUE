@@ -125,13 +125,13 @@ watch(() => route.params.id, loadPost)
 <style scoped>
 
 .LoadingContainer{
-	color: white;
+	color: var(--color-text);
 	display: flex;
 	flex-direction: column;
 }
 
 .LoadingContainer RouterLink{
-	color: white;
+	color: var(--color-text);
 	display: flex;
 	flex-direction: column;
 }
@@ -160,7 +160,7 @@ watch(() => route.params.id, loadPost)
 	background-color: var(--color-secondary);
 	display: flex;
 	flex-direction: column;
-	color: white;
+	color: var(--color-text);
 	margin-inline: 2rem;
 	margin-bottom: 2rem;
 	border-radius: 1rem;
@@ -205,7 +205,7 @@ watch(() => route.params.id, loadPost)
 	padding: 0 1rem;
 	border-radius: 0.7rem;
 	background-color: var(--color-secondary);
-	color: white;
+	color: var(--color-text);
 }
 
 .Like p,
@@ -224,6 +224,7 @@ watch(() => route.params.id, loadPost)
 	border-radius: 1rem;
 	overflow: hidden;
 	text-align: justify;
+	border: 1px solid var(--color-text);
 }
 
 .TextsContainer{
@@ -256,7 +257,7 @@ watch(() => route.params.id, loadPost)
 	margin-block: 2rem;
 	border-radius: 1rem;
 	padding: 0.5rem;
-	border: 1px solid white;
+	border: 1px solid var(--color-text);
 	box-shadow: var(--shadow-container);
 }
 
@@ -295,7 +296,6 @@ watch(() => route.params.id, loadPost)
 	margin-inline: 14rem;
 	align-content: center;
 	align-items: center;
-	margin-top: 1rem;
 }
 
 .NoComments{

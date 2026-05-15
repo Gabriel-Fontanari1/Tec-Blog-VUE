@@ -180,7 +180,7 @@ async function publishPost() {
 }
 
 .PageContentCreate h2{
-	color: white;
+	color: var(--color-text);
 }
 
 .InputsPlaceCreate{
@@ -193,7 +193,7 @@ async function publishPost() {
 .InputsPlaceCreate input{
 	border: 3px solid var(--color-accent);
 	background-color: var(--color-secondary);
-	color: white;
+	color: var(--color-text);
 	padding-inline: 1rem;
 	height: 2.5rem;
 	border-radius: 0.5rem;
@@ -203,7 +203,7 @@ async function publishPost() {
 
 .InputsPlaceCreate textarea{
 	background-color: var(--color-secondary);
-	color: white;
+	color: var(--color-text);
 	border: 2px solid var(--color-accent);
 	box-shadow: var(--shadow-insideContainer);
 }
@@ -227,7 +227,7 @@ async function publishPost() {
 	margin-top: 0.5rem;
 	background-color: var(--color-accent);
 	box-shadow: var(--shadow-container);
-	border: 2px solid white;
+	border: 2px solid var(--color-text);
 	font-weight: bold;
 }
 
@@ -257,10 +257,10 @@ async function publishPost() {
 	width: 10rem;
 	height: 3rem;
 	border-radius: 1rem;
-	color: black;
+	color: var(--color-text-secondary);
 	background-color: var(--color-accent);
 	box-shadow: var(--shadow-container);
-	border: 2px solid white;
+	border: 2px solid var(--color-text);
 	cursor: pointer;
 	z-index: 10;
 	font-weight: bold;
@@ -304,7 +304,7 @@ async function publishPost() {
 }
 
 .WriteContentText{
-	color: white;
+	color: var(--color-text);
 }
 
 .WriteContentText p{
@@ -335,7 +335,7 @@ async function publishPost() {
 }
 
 .TextMedia{
-	color: white;
+	color: var(--color-text);
 }
 
 .TextMedia p{

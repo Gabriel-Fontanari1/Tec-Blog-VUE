@@ -57,7 +57,7 @@ import { RouterLink } from 'vue-router'
 	justify-content: center;
 	align-content: center;
 	align-items: center;
-	color: white;
+	color: var(--color-text);
 	gap: 5rem;
 	background: var(--color-secondary);
 	padding: 0.5rem;
@@ -87,14 +87,14 @@ import { RouterLink } from 'vue-router'
 	gap:0.5rem;
 	border-radius: 0.5rem;
 	background-color: var(--color-accent);
-	border: 2px solid white;
+	border: 2px solid var(--color-text);
 	font-weight: bold;
-	color: black;
+	color: var(--color-text-secondary);
 	box-shadow: var(--shadow-container);
 }
 
 .ButtonSection button:nth-child(2){
-	color: white;
+	color: var(--color-text);
 }
 
 .ButtonSection i{
@@ -115,7 +115,7 @@ import { RouterLink } from 'vue-router'
 
 
 .Navigators a{
-	color: white;
+	color: var(--color-text);
 	text-decoration: none;
 }
 

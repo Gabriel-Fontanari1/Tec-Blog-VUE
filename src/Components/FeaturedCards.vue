@@ -62,7 +62,7 @@ const openPost = () => {
 }
 
 .TextContainer{
-	color: white;
+	color: var(--color-text);
 	gap: 0.5rem;
 	display: flex;
 	flex-direction: column;
@@ -71,7 +71,7 @@ const openPost = () => {
 .TextContainer input{
 	display: flex;
 	align-self: start;
-	color: white;
+	color: var(--color-text);
 	background: none;
 	border: none;
 	text-decoration: underline;

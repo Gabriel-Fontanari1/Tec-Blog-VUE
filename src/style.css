@@ -47,6 +47,8 @@ body {
   --color-success: #4ADE80;
 
   --color-text: #FFFFFF;
+  
+  --color-text-secondary: #000000;
 
   --color-muted: rgba(255,255,255,0.6);
 
@@ -67,7 +69,7 @@ body {
   background: linear-gradient(
           to right,
           transparent,
-          var(--color-accent),
+          var(--color-text),
           transparent
   );
 
