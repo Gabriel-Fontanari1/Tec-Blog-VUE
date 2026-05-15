@@ -33,55 +33,70 @@ watch(() => route.params.id, loadPost)
 			<div class="PostContainer">
 
 				<div class="TextsContainer">
+
 					<h1>{{ post.title }}</h1>
+					<div class="divider"></div>
 					<p>{{ post.body }}</p>
+
 				</div>
 
 				<div class="ImageContainer">
+
 					<div class="Img"></div>
+
 					<img :src="post.image" :alt="post.title">
 
 					<div class="LikesContainer">
+
 						<div class="Like">
+
 							<i class="material-icons">thumb_up</i>
 							<p>{{ post.reactions?.likes }}</p>
+
 						</div>
 
 						<div class="Dislikes">
+
 							<i class="material-icons">thumb_down</i>
 							<p>{{ post.reactions?.dislikes }}</p>
+
 						</div>
+
 					</div>
+
 				</div>
+
 			</div>
 
 			<div class="CommentsContainer">
+
 				<div class="HeadderComment">
+
 					<div class="TittleComentSection">
+
 						<h2>Comment Section</h2>
 					</div>
+
 				</div>
 
 				<div v-if="post.comments.length > 0">
 
-					<div
-						v-for="comment in post.comments"
-						:key="comment.id"
-						class="Usr"
-					>
-						<img
-							:src="comment.user.image"
-							:alt="comment.user.username"
-						>
+					<div v-for="comment in post.comments" :key="comment.id" class="Usr">
+
+						<img :src="comment.user.image" :alt="comment.user.username">
 
 						<div class="InfoUsrs">
+
 							<h3>{{ comment.user.username }}</h3>
 							<p>{{ comment.body }}</p>
+
 						</div>
 
 						<div class="LikeComment">
+
 							<i class="material-icons">thumb_up</i>
 							<p>{{ comment.likes }}</p>
+
 						</div>
 
 					</div>
@@ -89,10 +104,11 @@ watch(() => route.params.id, loadPost)
 				</div>
 
 				<div v-else class="NoComments">
-					<p>
-						No comments...
-					</p>
+
+					<p>No comments...</p>
+
 				</div>
+
 			</div>
 
 		</div>
@@ -167,6 +183,7 @@ watch(() => route.params.id, loadPost)
 	height: 15.625rem;
 	object-fit: cover;
 	border-radius: 1rem;
+	box-shadow: var(--shadow-container);
 }
 
 .LikesContainer {
@@ -205,7 +222,6 @@ watch(() => route.params.id, loadPost)
 	flex-direction: row;
 	margin: 2rem;
 	border-radius: 1rem;
-	background-color: var(--color-primary);
 	overflow: hidden;
 	text-align: justify;
 }
@@ -227,6 +243,10 @@ watch(() => route.params.id, loadPost)
 	width: 70%;
 }
 
+.PostContainer h1{
+	text-align: center;
+}
+
 .Usr{
 	display: flex;
 	flex-direction: row;
@@ -236,11 +256,13 @@ watch(() => route.params.id, loadPost)
 	margin-block: 2rem;
 	border-radius: 1rem;
 	padding: 0.5rem;
-	background-color: var(--color-primary);
+	border: 1px solid white;
+	box-shadow: var(--shadow-container);
 }
 
 .Usr img{
 	border-radius: 1rem;
+	box-shadow: var(--shadow-container);
 }
 
 .InfoUsrs{
@@ -261,7 +283,6 @@ watch(() => route.params.id, loadPost)
 	flex-direction: row;
 	border-radius: 1rem;
 	padding: 1rem;
-	background-color: var(--color-primary);
 	gap: 0.5rem;
 	margin-left: auto;
 	margin-right: 1rem;

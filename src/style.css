@@ -32,7 +32,7 @@ body {
 /* Sempre criar var de btns também, primary, secondary, alert... */
 
 :root{
-  
+
   /* COLORS */
   --color-primary: #093C5D;
 
@@ -44,7 +44,7 @@ body {
 
   --color-warning: #FFC857;
 
-  --color-success: #4ADE80; 
+  --color-success: #4ADE80;
 
   --color-text: #FFFFFF;
 
@@ -53,9 +53,24 @@ body {
 
   /* SHADOWS */
   --shadow-title: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
-  
+
   --shadow-container: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-  
+
   --shadow-insideContainer: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.divider{
+  width: 70%;
+
+  height: 2px;
+
+  background: linear-gradient(
+          to right,
+          transparent,
+          var(--color-accent),
+          transparent
+  );
+
+  margin: 0.5rem 0;
 }
 
