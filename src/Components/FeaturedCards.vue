@@ -54,6 +54,7 @@ const openPost = () => {
     width:  5rem;
     margin: 0.5rem;
     border-radius: 1rem;
+	box-shadow: var(--shadow-container);
 }
 
 .TextContainer{
@@ -75,7 +76,7 @@ const openPost = () => {
 }
 
 .TextContainer input:hover{
-    color: #5DF8D8;
+    color: var(--color-accent);
 }
 
 .LikesFeatured{

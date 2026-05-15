@@ -121,7 +121,7 @@ function previusPage() {
 	border: none;
 	outline: none;
 	appearance: none;
-    background-color: #093C5D;
+    background-color: var(--color-primary);
 	-webkit-appearance: none;
 	cursor: pointer;
 	width: 3rem;
@@ -139,7 +139,7 @@ function previusPage() {
 	border: none;
 	outline: none;
 	appearance: none;
-	background-color: #093C5D;
+	background-color: var(--color-primary);
 	color: white;
 	-webkit-appearance: none;
 	cursor: pointer;

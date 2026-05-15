@@ -57,9 +57,9 @@ const searchPosts = () => {
     margin: 1rem;
     padding-inline: 1rem;
     border-radius: 1rem;
-    background-color: #0B4A72;
+    background-color: var(--color-secondary);
 	font-size: 30px;
-	box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
+	box-shadow: var(--shadow-title);
 }
 
 .Tittle p{
@@ -75,8 +75,8 @@ const searchPosts = () => {
     border-radius: 3rem;
     margin-bottom:1rem;
     gap: 1rem;
-    background-color: #0B4A72;
-	box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    background-color: var(--color-secondary);
+	box-shadow: var(--shadow-container);
 }
 
 .SearchBar input{
@@ -95,13 +95,15 @@ const searchPosts = () => {
     flex-direction: row;
     align-content: center;
     align-items: center;
-    width: 6rem;
-    height: 3rem;
+    width: 6.5rem;
+    height: 2.5rem;
     color: black;
-    background-color: #5DF8D8;
+    background-color: var(--color-accent);
     border-radius: 3rem;
     font-size: 16px;
 	border: 2px solid white;
+	box-shadow: var(--shadow-container);
+	font-weight: bold;
 }
 
 </style>

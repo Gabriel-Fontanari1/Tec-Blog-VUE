@@ -53,7 +53,7 @@ import { RouterLink } from 'vue-router'
     align-items: center;
     color: white;
     gap: 5rem;
-    background: #0B4A72;
+    background: var(--color-secondary);
     padding: 0.5rem;
 }
 
@@ -80,10 +80,11 @@ import { RouterLink } from 'vue-router'
     height: 2.3rem;
     gap:0.5rem;
     border-radius: 0.5rem;
-    background-color: #5DF8D8;
+    background-color: var(--color-accent);
 	border: 2px solid white;
+	font-weight: bold;
     color: black;
-	box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+	box-shadow: var(--shadow-container);
 }
 
 .ButtonSection button:nth-child(2){
@@ -95,7 +96,7 @@ import { RouterLink } from 'vue-router'
 }
 
 .ButtonSection button:nth-child(2){
-    background-color: #0B4A72;
+    background-color: var(--color-secondary);
 
 }
 
@@ -113,7 +114,7 @@ import { RouterLink } from 'vue-router'
 }
 
 .Navigators a:hover{
-    color: #5DF8D8;
+    color: var(--color-accent);
 }
 
 </style>
