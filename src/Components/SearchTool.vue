@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { usePostStore } from '../Stores/PostStore'
+import RouteName from "../router/Routes.ts";
 
 const router = useRouter()
 const postStore = usePostStore()
@@ -9,7 +10,7 @@ const searchInput = ref(postStore.searchTerm)
 
 const searchPosts = () => {
 	postStore.setSearchTerm(searchInput.value)
-	router.push({ name: 'HomePage' })
+	router.push({ name: RouteName.HomePage })
 }
 </script>
 

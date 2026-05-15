@@ -224,6 +224,7 @@ watch(() => route.params.id, loadPost)
 	border-radius: 1rem;
 	overflow: hidden;
 	text-align: justify;
+	box-shadow: var(--shadow-container);
 	border: 1px solid var(--color-text);
 }
 

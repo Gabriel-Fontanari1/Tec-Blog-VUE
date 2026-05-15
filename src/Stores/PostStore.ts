@@ -1,6 +1,13 @@
 import {defineStore} from 'pinia'
 import {computed, ref, watch} from 'vue'
-import type { ApiComment, ApiPost, CommentsResponse, Post, PostsResponse, CreatePostInput } from '../Interfaces/I-Posts'
+import type {
+    ApiComment,
+    ApiPost,
+    CommentsResponse,
+    Post,
+    PostsResponse,
+    CreatePostInput
+} from '../Interfaces/I-Posts'
 /* Chave padrao para salvar dados no localstorage */
 const CREATED_POSTS_STORAGE_KEY = 'createdPosts'
 
@@ -46,7 +53,7 @@ export const usePostStore = defineStore('post', () => {
             return allPosts.value
         }
 
-        return allPosts.value.filter((post) => post.title.toLowerCase().startsWith(term))
+        return allPosts.value.filter((post) => post.title.toLowerCase().includes(term))
     })
 
     const setSearchTerm = (term: string) => {
