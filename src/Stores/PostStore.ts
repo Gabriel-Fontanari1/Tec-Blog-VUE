@@ -1,7 +1,7 @@
 import {defineStore} from 'pinia'
 import {computed, ref, watch} from 'vue'
 import type { ApiComment, ApiPost, CommentsResponse, Post, PostsResponse, CreatePostInput } from '../Interfaces/I-Posts'
-
+/* Chave padrao para salvar dados no localstorage */
 const CREATED_POSTS_STORAGE_KEY = 'createdPosts'
 
 const loadCreatedPosts = (): Post[] => {
@@ -19,7 +19,7 @@ const loadCreatedPosts = (): Post[] => {
     }
 }
 
-/* Liberar os valores para serem usados nos : */
+/* Liberar os valores para serem usados nos v: */
 export const usePostStore = defineStore('post', () => {
     const dataCards = ref<Post[]>([])
     const selectedPost = ref<Post | null>(null)
@@ -39,6 +39,7 @@ export const usePostStore = defineStore('post', () => {
     })
 
     const filteredPosts = computed(() => {
+        /* Sem espaço e sem caps */
         const term = searchTerm.value.trim().toLowerCase()
 
         if (!term) {
@@ -59,7 +60,7 @@ export const usePostStore = defineStore('post', () => {
             const id = Date.now()
             console.log("Entrou na criacao de post")
             const newPost: Post = {
-                id, title: post.title, body: post.body, tags: ['created'],
+                id, title: post.title, body: post.body, tags: [''],
                 reactions: {
                     likes: Math.floor (Math.random() * 50) + 1,
                     dislikes: Math.floor (Math.random() * 50) + 1,
@@ -142,6 +143,7 @@ export const usePostStore = defineStore('post', () => {
         error.value = null
 
         try {
+            /* busca nos posts ja carregados no ap */
             const existingPost = allPosts.value.find((post) => post.id === id)
 
             if (existingPost) {
@@ -149,11 +151,13 @@ export const usePostStore = defineStore('post', () => {
                 return
             }
 
+            /* Se nao estiver no array, busca diretamente na api */
             const postResponse = await fetch(`https://dummyjson.com/posts/${id}`)
             if (!postResponse.ok) {
                 throw new Error('Nao foi possivel buscar o post')
             }
 
+            /* Formata */
             const postData: ApiPost = await postResponse.json()
             selectedPost.value = await formatPost(postData)
         } catch (caughtError) {

@@ -78,12 +78,16 @@ async function publishPost() {
 				<div class="HeaderWriteContent">
 
 					<div class="ContainerBorderIcon">
+
 						<i class="material-icons">create</i>
+
 					</div>
 
 					<div class="WriteContentText">
+
 						<h2>Write Your Content</h2>
 						<p>Express your thoughts and ideas.</p>
+
 					</div>
 
 				</div>
@@ -103,7 +107,7 @@ async function publishPost() {
 					<div class="IconBorderContainer">
 						<i class="material-icons">image</i>
 					</div>
-						
+
 					<div class="TextMedia">
 
 						<h2>Featured Media</h2>
@@ -114,7 +118,7 @@ async function publishPost() {
 				</div>
 
 				<div class="ImageUpload">
-					
+
 					<img v-if="image" :src="image" alt="Selected Image">
 					<input ref="fileInput" type="file" accept="image/*" class="FileInput" @change="selectImage">
 					<button type="button" class="ButtonUploadImage" @click="openFileSelector">Upload Image</button>
@@ -122,13 +126,13 @@ async function publishPost() {
 				</div>
 
 				<div class="ButtonsPlaceCreate">
-				
-					
+
+
 					<button type="button" @click="publishPost()">
 						Publish Post
 						<i class="material-icons">send</i>
 					</button>
-					
+
 				</div>
 
 			</div>
@@ -295,7 +299,7 @@ async function publishPost() {
 	align-items: center;
 	justify-content: center;
 	border-radius: 100rem;
-   padding: 0.5rem;
+	padding: 0.5rem;
 	border: 3px solid var(--color-accent);
 }
 
