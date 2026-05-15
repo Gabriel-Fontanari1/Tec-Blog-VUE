@@ -2,21 +2,22 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '../Views/HomePage.vue'
 import PostView from '../Views/PostView.vue'
 import CreatePost from '../Views/CreatePost.vue'
+import RouteName from "./Routes.ts";
 
 const routes = [
     {
         path: '/',
-        name: 'HomePage',
+        name: RouteName.HomePage,
         component: HomePage
     },
     {
         path: '/post/:id',
-        name: 'PostView',
+        name: RouteName.PostView,
         component: PostView
     },
     {
         path: '/create',
-        name: 'CreatePost',
+        name: RouteName.CreatePost,
         component: CreatePost
     }
 ]

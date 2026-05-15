@@ -17,6 +17,15 @@ const openPost = () => {
 		}
 	})
 }
+
+const limitText = (text: string, max: number) => {
+	
+	return text.length > max
+		? text.slice(0, max) + '...'
+		: text
+	
+}
+
 </script>
 
 <template>
@@ -27,7 +36,7 @@ const openPost = () => {
 		<div class="TextContainer">
 
 			<input type="button" value="Read More" @click="openPost">
-			<p>{{data.title}}</p>
+			<p>{{ limitText(data.title, 30) }}</p>
 
 			<div class="LikesFeatured">
 

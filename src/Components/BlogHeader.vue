@@ -2,47 +2,34 @@
 
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
+import RouteName from "../router/Routes.ts";
 </script>
 
 <template>
 
 	<div class="MainContainer">
-
 		<div class="ImgSection">
-
 			<img src="../assets/NewLogoBlog.png" alt="">
-
 		</div>
 
 		<div class="Navigators">
-
-			<RouterLink to="/">Home</RouterLink>
-			<RouterLink to="/create">Create</RouterLink>
+			<RouterLink :to="{name: RouteName.HomePage}">Home</RouterLink>
+			<RouterLink :to="{name: RouteName.CreatePost}">Create</RouterLink>
 			<p>About</p>
 			<p>Contact</p>
-
 		</div>
 
 		<div class="ButtonSection">
-
 			<button class="BtnStarted">
-
 				<p>Get Started</p>
 				<i class="material-icons">playlist_add</i>
-
 			</button>
-
 			<button class="BtnLogIn">
-
 				<p>Sign In</p>
 				<i class="material-icons">subdirectory_arrow_right</i>
-
 			</button>
-
 		</div>
-
 	</div>
-
 </template>
 
 <style scoped>
