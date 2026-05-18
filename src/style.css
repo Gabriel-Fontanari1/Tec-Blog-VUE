@@ -34,11 +34,11 @@ body {
 :root{
 
   /* COLORS */
-  --color-primary: #093C5D;
+  --color-primary: #053857;
 
-  --color-secondary: #0B4A72;
+  --color-secondary: #042940;
 
-  --color-accent: #5DF8D8;
+  --color-accent: #4ecfb5;
 
   --color-danger: #FF5A5F;
 
@@ -69,7 +69,7 @@ body {
   background: linear-gradient(
           to right,
           transparent,
-          var(--color-text),
+          var(--color-accent),
           transparent
   );
 

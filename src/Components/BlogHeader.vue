@@ -74,7 +74,7 @@ import RouteName from "../router/Routes.ts";
 	gap:0.5rem;
 	border-radius: 0.5rem;
 	background-color: var(--color-accent);
-	border: 2px solid var(--color-text);
+	border: none;
 	font-weight: bold;
 	color: var(--color-text-secondary);
 	box-shadow: var(--shadow-container);
@@ -82,6 +82,7 @@ import RouteName from "../router/Routes.ts";
 
 .ButtonSection button:nth-child(2){
 	color: var(--color-text);
+	border: 2px solid var(--color-text);
 }
 
 .ButtonSection i{
