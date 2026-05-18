@@ -101,7 +101,7 @@ const searchPosts = () => {
 	background-color: var(--color-accent);
 	border-radius: 3rem;
 	font-size: 16px;
-	border: 2px solid var(--color-text);
+	border: none;
 	box-shadow: var(--shadow-container);
 	font-weight: bold;
 }

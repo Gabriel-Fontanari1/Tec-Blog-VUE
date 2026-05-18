@@ -61,7 +61,12 @@ watch(() => route.params.id, loadPost)
 							<p>{{ post.reactions?.dislikes }}</p>
 
 						</div>
-
+						
+						<div class="SharesContainer">
+							<i class="material-icons">share</i>
+							<p>Share</p>
+						</div>
+						
 					</div>
 
 				</div>
@@ -166,14 +171,17 @@ watch(() => route.params.id, loadPost)
 	border-radius: 1rem;
 	width: min(100% - 4rem, 75rem);
 	overflow: hidden;
+	border: 1px solid var(--color-accent);
 	box-shadow: var(--shadow-container);
 }
 
 .ImageContainer{
 	display: flex;
 	flex-direction: column;
-	align-items: end;
-	align-self: flex-end;
+	align-items: center;
+	align-self: center;
+	justify-items: center;
+	justify-content: center;
 	gap: 1rem;
 	margin-inline: 3rem;
 }
@@ -189,9 +197,18 @@ watch(() => route.params.id, loadPost)
 .LikesContainer {
 	display: flex;
 	align-items: center;
-	justify-content: flex-end;
-	gap: 1rem;
+	justify-content: center;
+	align-content: center;
+	justify-items: center;
+	padding: 0.5rem;
+	align-self: center;
+	gap: 3rem;
+	padding-inline: 2rem;
+	border-radius: 1rem;
+	background-color: var(--color-primary);
+	box-shadow: var(--shadow-container);
 	margin-bottom: 1rem;
+	border: 1px solid var(--color-accent);
 }
 
 .Like,
@@ -199,12 +216,12 @@ watch(() => route.params.id, loadPost)
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	align-self: center;	
+	justify-items: center;
 	gap: 0.5rem;
 	height: 2.5rem;
 	min-width: 5rem;
-	padding: 0 1rem;
 	border-radius: 0.7rem;
-	background-color: var(--color-secondary);
 	color: var(--color-text);
 }
 
@@ -224,8 +241,6 @@ watch(() => route.params.id, loadPost)
 	border-radius: 1rem;
 	overflow: hidden;
 	text-align: justify;
-	box-shadow: var(--shadow-container);
-	border: 1px solid var(--color-text);
 }
 
 .TextsContainer{
@@ -246,7 +261,7 @@ watch(() => route.params.id, loadPost)
 }
 
 .PostContainer h1{
-	text-align: center;
+	text-align: left;
 }
 
 .Usr{
@@ -254,11 +269,11 @@ watch(() => route.params.id, loadPost)
 	flex-direction: row;
 	align-items: center;
 	gap: 1rem;
-	margin-inline: 13rem;
+	margin-inline: 5rem;
 	margin-block: 2rem;
 	border-radius: 1rem;
 	padding: 0.5rem;
-	border: 1px solid var(--color-text);
+	border: 1px solid var(--color-accent);
 	box-shadow: var(--shadow-container);
 }
 
@@ -293,8 +308,7 @@ watch(() => route.params.id, loadPost)
 .HeadderComment{
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
-	margin-inline: 14rem;
+	margin-inline: 5rem;
 	align-content: center;
 	align-items: center;
 }
@@ -302,11 +316,17 @@ watch(() => route.params.id, loadPost)
 .NoComments{
 	display: flex;
 	align-items: center;
-	margin-inline: 14rem;
+	margin-inline: 5rem;
 	margin-top: 1rem;
 	text-decoration: underline;
 	opacity: 50%;
 	margin-bottom: 2rem;
+}
+
+.SharesContainer{
+	display: flex;
+	flex-direction: row;
+	gap: 0.5rem;
 }
 
 </style>
